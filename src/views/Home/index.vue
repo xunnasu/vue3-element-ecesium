@@ -32,7 +32,7 @@ const data = [
   },
   {
     date: '02/26',
-    temperature: '2',
+    temperature: '',
     line: '',
     weather: '气候',
     weatherImg: 'Drizzling',

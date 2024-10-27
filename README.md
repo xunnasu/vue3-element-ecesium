@@ -1,29 +1,28 @@
-# vue-project
+# vue3-project
 
-This template should help get you started developing with Vue 3 in Vite.
+这是一个基于vue3+elementPlus+echarts5+cesium 的项目, 主要体现图表和地图相关的功能
 
-## Recommended IDE Setup
+## 注意node 版本
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+node >= 18 
 
 ## Project Setup
 
 ```sh
-pnpm install
+yarn
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
-pnpm dev
+npm run dev
 ```
 
 ### Compile and Minify for Production
 
 ```sh
-pnpm build
+npm run build
 ```
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
