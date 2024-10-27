@@ -1,5 +1,5 @@
 <template>
-  <div class="weather-line"ref="echartRef"></div>
+  <div class="weather-line" ref="echartRef"></div>
 </template>
 <script setup>
 import { dispose, init } from 'echarts';
@@ -28,7 +28,7 @@ function setChart() {
     xAxis: {
       show: false,
       type: 'category',
-      data:  props.data.map((_,i) => i),
+      data: props.data.map((_, i) => i),
     },
     yAxis: {
       type: 'value',
@@ -48,7 +48,7 @@ function setChart() {
     }
   });
 }
-watch(()=> props.data.value, () => {
+watch(() => props.data, () => {
   setChart()
 })
 

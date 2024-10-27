@@ -1,14 +1,28 @@
 <template>
-  
-  <div class="table">
-    <WeatherHours :data="data" :hiddenLine="false"/>
+  <div style="position: relative;">
+    <div class="table" ref="el" :style="style" style="position: fixed">
+      <WeatherDet :qiya="weatherData.qiya" :fengsu="weatherData.fengsu" :fengxiang="weatherData.fengxiang"></WeatherDet>
+      <WeatherHours :data="data" :hiddenLine="false" />
+    </div>
+    <div ref="el2" :style="`${style2}position: fixed;`">
+      <Region v-if="showChild" :regin-data="reginData" @close="handleClose"></Region>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, onMounted } from 'vue';
 import WeatherHours from './component/WeatherHours/index.vue'
+import WeatherDet from './component/WeatherDet/index.vue'
+import Region from './component/Region/index.vue'
+import { useDraggable } from '@vueuse/core'
+const el = ref(null)
+const el2 = ref(null)
+const showChild = ref(true)
 
+const handleClose = () => {
+  showChild.value = false
+}
 const data = [
   {
     date: '02/26',
@@ -101,6 +115,47 @@ const data = [
     time: '18:00',
   },
 ];
+const { x, y, style } = useDraggable(el, {
+  initialValue: { x: 10, y: 10 },
+})
+
+const { style: style2, ...a } = useDraggable(el2, {
+  initialValue: { x: 100, y: 100 },
+});
+const reginData = ref([
+  {
+    name: '全部',
+    value: 0,
+  },
+  {
+    name: '东部战区',
+    value: 1,
+  },
+  {
+    name: '西部战区',
+    value: 2,
+  },
+  {
+    name: '南部战区',
+    value: 3,
+  },
+  {
+    name: '北部战区',
+    value: 4,
+  },
+  {
+    name: '中部战区',
+    value: 5,
+  },
+])
+
+
+const weatherData = {
+  qiya: 1,
+  fengsu: 2,
+  fengxiang: 4,
+}
+
 
 </script>
 
@@ -109,10 +164,11 @@ body,
 html {
   background: #1b4572;
 }
+
 .table {
   width: 600px;
   background: #1b4572;
   position: relative;
-  
+
 }
 </style>
